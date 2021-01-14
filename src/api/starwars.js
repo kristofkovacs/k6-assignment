@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://swapi.py4e.com/";
+const URL = "https://swapi.py4e.com/api";
 
 export default axios.create({
   baseURL: URL,
