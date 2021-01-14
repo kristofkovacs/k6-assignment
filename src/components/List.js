@@ -13,8 +13,16 @@ const List = ({ data, ...props }) => {
       {...props}
     >
       {data &&
-        data.map(({ name }) => {
-          return <Card key={name} name={name} />;
+        data.map(({ name, species, homeworld, films }) => {
+          return (
+            <Card
+              key={name}
+              name={name}
+              species={species}
+              movieLinks={films}
+              homeWorld={homeworld}
+            />
+          );
         })}
     </SimpleGrid>
   );

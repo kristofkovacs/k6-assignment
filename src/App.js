@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Flex, ChakraProvider } from "@chakra-ui/react";
+import { Flex, ChakraProvider, useDisclosure } from "@chakra-ui/react";
 import starwars from "./api/starwars";
 
 import SearchBar from "./components/SearchBar";
 import List from "./components/List";
+import Detail from "./components/Detail";
 
 const App = () => {
   const [term, setTerm] = useState("");
@@ -33,6 +34,8 @@ const App = () => {
 
   useEffect(() => {}, []);
 
+  const { onClose } = useDisclosure();
+
   return (
     <ChakraProvider>
       <Flex justify="center" w="100vw" minH="100vh" bgColor="gray.50">
@@ -42,9 +45,10 @@ const App = () => {
           align="center"
           direction="column"
         >
-          <div>App</div>
           <SearchBar onSearch={onSearch} />
           <List mt={6} data={characters} />
+
+          {/* <Detail isOpen={true} onClose={onClose} /> */}
         </Flex>
       </Flex>
     </ChakraProvider>
