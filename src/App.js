@@ -51,7 +51,6 @@ const App = () => {
   }, [debouncedTerm]);
 
   const pageChange = (link) => {
-    console.log(link);
     setLoading(true);
     starwars.get(link, { params: { search: term } }).then(({ data }) => {
       const { previous, next, results } = data;

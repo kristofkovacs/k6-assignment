@@ -4,7 +4,6 @@ import { SimpleGrid } from "@chakra-ui/react";
 import NameCard from "./NameCard";
 
 const List = ({ data, ...props }) => {
-  console.log(data);
   return (
     <SimpleGrid
       columns={[1, 1, 1, 2]}

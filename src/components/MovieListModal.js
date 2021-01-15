@@ -40,7 +40,6 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
     if (movies.length) {
       setLoading(false);
     }
-    console.log(loading);
   }, [movies]);
 
   return (
@@ -72,9 +71,12 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
           ) : (
             <>
               {movies.map(
-                ({ data: { title, release_date, opening_crawl } }) => {
+                ({
+                  data: { title, episode_id, release_date, opening_crawl },
+                }) => {
                   return (
                     <Flex
+                      key={episode_id}
                       py={4}
                       px={6}
                       direction="column"
