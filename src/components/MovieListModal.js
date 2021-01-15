@@ -105,7 +105,7 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
           )}
         </ModalBody>
         <ModalFooter justifyContent="center">
-          <Button colorScheme="red" mr={3} onClick={onClose}>
+          <Button colorScheme="red" mr={3} onClick={onClose} mb={[8, 8, 2]}>
             Close
           </Button>
         </ModalFooter>

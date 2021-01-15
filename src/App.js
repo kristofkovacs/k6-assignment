@@ -92,7 +92,7 @@ const App = () => {
           ) : characters.length ? (
             <>
               <NameCardList mt={6} data={characters} />
-              <Flex mt={8}>
+              <Flex mt={8} pb={[8, 8, 0]}>
                 <Button
                   mr={4}
                   leftIcon={<ChevronLeftIcon />}
