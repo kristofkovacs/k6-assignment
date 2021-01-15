@@ -70,39 +70,45 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
             </Flex>
           ) : (
             <>
-              {movies.map(
-                ({
-                  data: { title, episode_id, release_date, opening_crawl },
-                }) => {
-                  return (
-                    <Flex
-                      key={episode_id}
-                      py={4}
-                      px={6}
-                      direction="column"
-                      borderRadius={10}
-                      bgColor="gray.700"
-                      mt={4}
-                    >
-                      <Heading as="h3" size="md" color="yellow.300">
-                        {title}
-                      </Heading>
-                      <Text fontWeight="semibold" color="gray.400" mt={1}>
-                        Released on{" "}
-                        <b>{`${Moment(release_date).format(
-                          "MMMM DD, YYYY"
-                        )}`}</b>
-                      </Text>
-                      <Text mt={4} color="gray.200" fontWeight="semibold">
-                        Short description:
-                      </Text>
-                      <Text mt={1} color="gray.100">
-                        {`${opening_crawl.substring(0, 150)}...`}
-                      </Text>
-                    </Flex>
-                  );
-                }
-              )}
+              {movies
+                .sort(
+                  (a, b) =>
+                    new Date(b.data.release_date) -
+                    new Date(a.data.release_date)
+                )
+                .map(
+                  ({
+                    data: { title, episode_id, release_date, opening_crawl },
+                  }) => {
+                    return (
+                      <Flex
+                        key={episode_id}
+                        py={4}
+                        px={6}
+                        direction="column"
+                        borderRadius={10}
+                        bgColor="gray.700"
+                        mt={4}
+                      >
+                        <Heading as="h3" size="md" color="yellow.300">
+                          {title}
+                        </Heading>
+                        <Text fontWeight="semibold" color="gray.400" mt={1}>
+                          Released on{" "}
+                          <b>{`${Moment(release_date).format(
+                            "MMMM DD, YYYY"
+                          )}`}</b>
+                        </Text>
+                        <Text mt={4} color="gray.200" fontWeight="semibold">
+                          Short description:
+                        </Text>
+                        <Text mt={1} color="gray.100">
+                          {`${opening_crawl.substring(0, 150)}...`}
+                        </Text>
+                      </Flex>
+                    );
+                  }
+                )}
             </>
           )}
         </ModalBody>
