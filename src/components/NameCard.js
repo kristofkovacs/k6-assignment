@@ -3,7 +3,7 @@ import { Flex, Text, Heading, useDisclosure } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import starwars from "../api/starwars";
 
-import Detail from "./Detail";
+import MovieListModal from "./MovieListModal";
 
 const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
   const [speciesName, setSpeciesName] = useState("");
@@ -59,7 +59,7 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
           </Text>
           {homeWorldInfos.population === "unknown" ? (
             <Text fontWeight="semibold" color="gray.700" mt={4}>
-              Their home planet is <b>{homeWorldInfos.name}</b> with{" "}
+              Their home planet is <b>{homeWorldInfos.name}</b> with an{" "}
               <b>{homeWorldInfos.population}</b> population number
             </Text>
           ) : (
@@ -72,7 +72,7 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
         <ChevronRightIcon h={6} w={6} />
       </Flex>
       {isOpen && (
-        <Detail
+        <MovieListModal
           isOpen={isOpen}
           onClose={onClose}
           name={name}

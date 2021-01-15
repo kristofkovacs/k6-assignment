@@ -1,7 +1,7 @@
 import React from "react";
 import { SimpleGrid } from "@chakra-ui/react";
 
-import Card from "./Card";
+import NameCard from "./NameCard";
 
 const List = ({ data, ...props }) => {
   console.log(data);
@@ -15,7 +15,7 @@ const List = ({ data, ...props }) => {
       {data &&
         data.map(({ name, species, homeworld, films }) => {
           return (
-            <Card
+            <NameCard
               key={name}
               name={name}
               species={species}

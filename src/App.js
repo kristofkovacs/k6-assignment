@@ -11,7 +11,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import starwars from "./api/starwars";
 
 import SearchBar from "./components/SearchBar";
-import List from "./components/List";
+import NameCardList from "./components/NameCardList";
 
 const App = () => {
   const [term, setTerm] = useState("");
@@ -90,7 +90,7 @@ const App = () => {
             </Flex>
           ) : characters.length ? (
             <>
-              <List mt={6} data={characters} />
+              <NameCardList mt={6} data={characters} />
               <Flex mt={8}>
                 <Button
                   mr={4}

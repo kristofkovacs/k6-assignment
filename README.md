@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# K6 Frontend Engineering Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution for the K6 Star Wars API React Frontend Engineering assignment
 
-## Available Scripts
+Deployed to [Netlify](https://k6-assignment-kristof.netlify.app)
 
-In the project directory, you can run:
+## Getting started
 
-### `yarn start`
+1. Run `yarn install`
+2. Run `yarn start`
+3. Access the app on http://localhost:3000 (or 300x if 3000 is already in use)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Requirements and tasks
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+Create a simple web interface using React allowing users to:
 
-### `yarn test`
+A. Search for characters in the Starwars universe and display:
+  - The characters full name.
+  - What type of species it is.
+  - The character's home planet name as well as the planet's population count.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+B. Select a character from the list to see which movies the character appears in. Display the movies ordered by its `release_date` in descending order. Display the following information about each movie:
+  - title
+  - release_date
+  - opening_crawl (only the first 150 characters).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The data can be retrieved from the following API - https://swapi.dev/documentation
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Solution
 
-### `yarn eject`
+I have managed to create the solution for all the tasks described above. 👆
+The app fetches the given `API`, and retreives the first 10 characters presented in a `NameCardList` consisting of `NameCard` items. The list has a simple pagination, where the user can go to the next or previous 10 items.
+With typing in the `SearchBar` the user has the ability to request more detailed results (the new requests are delayed., in order to reduce the number of requests, so that the fetching will only fire when the user stops typing for 1000 ms).
+By clicking on a `NameCard` the user will see the list of movies the given character was a part of with the release date and a short truncated description of the movie.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Libraries / Frameworks
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For the whole solution I have used `React.js` with JavaScript.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+For maintaining a clear and consistent UI I have used `@chakra-ui/react` as a UI library which has some default properties and can be styled really quickly and easily.
+The famous CSS-in-JS library, `styled-components` was the other option I was thinking of using instead of a UI component library, but I thought `chakra` is also pretty readable, customizable and extendable if needed, and I can create the solution way faster in a more consistent way.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Instead of the built-in fetch function I used `axios` for the API requests.
 
-## Learn More
+I have used `moment` for parsing dates.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Trade-offs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I wanted to give you a sneak-peek of how I write my code, and didn't want to overcomplicate or overengineer things with writing my whole components with `styled-components` or include more unnecessary libraries than I used.
 
-### Code Splitting
+The `<App />` and `<Detail />` component could be decomposed into more components, for example another `<MovieCard />` component could be introduced.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+We highly rely on the API, I also had some issues there, because in Safari and after deploying the https://swapi.dev/api did not work, because it's SSL certificate expired (Github issue: https://github.com/Juriy/swapi/issues/22) and the browsers did not support the communication between `https` and `http`, and I got some CORS issues, so I found an another working fork, which worked fine, so I decided to use that: https://swapi.py4e.com/api
 
-### Analyzing the Bundle Size
+## Conclusion
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+I really liked the test and having in mind to write clear, consistent, production-ready code, it became really fun. After starting to go more deeply into the API structure I thought that it will take more time, but it became really fun, and after some styling it started to look really nice. Would love to extend the project in the future 😶
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+I'm looking forward to hearing your feedback!
