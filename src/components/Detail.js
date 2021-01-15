@@ -16,6 +16,7 @@ import {
   Flex,
   Button,
   Spinner,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 
 const Detail = ({ isOpen, onClose, movieLinks, name }) => {
@@ -45,6 +46,7 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent pt={6} bg="gray.600">
+        <ModalCloseButton color="gray.200" />
         <ModalHeader color="yellow.200" fontWeight="semibold" fontSize={26}>
           {name} appeared in the following movies:
         </ModalHeader>
