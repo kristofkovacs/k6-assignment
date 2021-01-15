@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Flex,
-  Button,
-  ChakraProvider,
-  Spinner,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Flex, Button, ChakraProvider, Spinner, Image } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import starwars from "./api/starwars";
 
@@ -56,16 +50,16 @@ const App = () => {
     });
   };
 
-  useEffect(() => {}, []);
   return (
     <ChakraProvider>
-      <Flex justify="center" w="100vw" minH="100vh" bgColor="gray.50">
+      <Flex justify="center" w="100vw" minH="100vh" bgColor="gray.800">
         <Flex
           w={["95%", "90%", "650px", "800px", "1000px"]}
           my={6}
           align="center"
           direction="column"
         >
+          <Image src="/sw_logo.svg" w={[48, 64]} mb={4} />
           <SearchBar onSearch={onSearch} />
           {loading ? (
             <Flex
@@ -78,8 +72,8 @@ const App = () => {
               <Spinner
                 thickness="4px"
                 speed="0.5s"
-                emptyColor="gray.200"
-                color="teal.500"
+                emptyColor="red.50"
+                color="red.600"
                 size="lg"
                 mt={64}
               />

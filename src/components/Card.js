@@ -21,7 +21,14 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
 
   useEffect(() => {
     starwars.get(homeWorld).then(({ data: { name, population } }) => {
-      setHomeWorldInfos({ name: name, population: population });
+      if (population !== "unknown") {
+        setHomeWorldInfos({
+          name: name,
+          population: population.replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+        });
+      } else {
+        setHomeWorldInfos({ name: name, population: population });
+      }
     });
   }, []);
 
@@ -44,18 +51,23 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
         {...props}
       >
         <Flex direction="column">
-          <Heading as="h2" size="lg" color="teal.500">
+          <Heading as="h2" size="lg" color="red.600">
             {name}
           </Heading>
-          <Text isTruncated noOfLines={3}>
-            Species: {speciesName}
+          <Text fontWeight="semibold" color="gray.700">
+            Species: <b>{speciesName}</b>
           </Text>
-          <Text isTruncated noOfLines={3}>
-            Home Planet: {homeWorldInfos.name}
-          </Text>
-          <Text isTruncated noOfLines={3}>
-            Population: {homeWorldInfos.population}
-          </Text>
+          {homeWorldInfos.population === "unknown" ? (
+            <Text fontWeight="semibold" color="gray.700" mt={4}>
+              Their home planet is <b>{homeWorldInfos.name}</b> with{" "}
+              <b>{homeWorldInfos.population}</b> population number
+            </Text>
+          ) : (
+            <Text fontWeight="semibold" color="gray.700" mt={4}>
+              Their home planet is <b>{homeWorldInfos.name}</b> with a
+              population count of <b>{homeWorldInfos.population}</b>
+            </Text>
+          )}
         </Flex>
         <ChevronRightIcon h={6} w={6} />
       </Flex>
