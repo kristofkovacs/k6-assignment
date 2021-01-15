@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Flex, Button, ChakraProvider, Spinner, Image } from "@chakra-ui/react";
+import {
+  Flex,
+  Button,
+  ChakraProvider,
+  Spinner,
+  Heading,
+  Image,
+} from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import starwars from "./api/starwars";
 
@@ -19,7 +26,11 @@ const App = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     const timerId = setTimeout(() => {
+      if (debouncedTerm === term) {
+        setLoading(false);
+      }
       setDebouncedTerm(term);
     }, 1000);
 
@@ -67,7 +78,7 @@ const App = () => {
               align="center"
               justifySelf="center"
               alignSelf="center"
-              py={12}
+              py={[12, 12, 20, 64]}
             >
               <Spinner
                 thickness="4px"
@@ -75,29 +86,48 @@ const App = () => {
                 emptyColor="red.50"
                 color="red.600"
                 size="lg"
-                mt={64}
               />
             </Flex>
+          ) : characters.length ? (
+            <>
+              <List mt={6} data={characters} />
+              <Flex mt={8}>
+                <Button
+                  mr={4}
+                  leftIcon={<ChevronLeftIcon />}
+                  isDisabled={!previous}
+                  onClick={(e) => pageChange(previous)}
+                >
+                  Previous page
+                </Button>
+                <Button
+                  rightIcon={<ChevronRightIcon />}
+                  isDisabled={!next}
+                  onClick={(e) => pageChange(next)}
+                >
+                  Next page
+                </Button>
+              </Flex>
+            </>
           ) : (
-            <List mt={6} data={characters} />
+            <Flex
+              justify="center"
+              align="center"
+              py={[12, 12, 20, 64]}
+              px={[4]}
+            >
+              <Heading
+                as="h4"
+                fontSize={[24, 24, 32]}
+                color="gray.200"
+                textAlign="center"
+                maxW={500}
+              >
+                No results for this term. Please try searching for a valid Star
+                Wars character...
+              </Heading>
+            </Flex>
           )}
-          <Flex mt={8}>
-            <Button
-              mr={4}
-              leftIcon={<ChevronLeftIcon />}
-              isDisabled={!previous}
-              onClick={(e) => pageChange(previous)}
-            >
-              Previous page
-            </Button>
-            <Button
-              rightIcon={<ChevronRightIcon />}
-              isDisabled={!next}
-              onClick={(e) => pageChange(next)}
-            >
-              Next page
-            </Button>
-          </Flex>
         </Flex>
       </Flex>
     </ChakraProvider>

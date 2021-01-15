@@ -64,7 +64,6 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
                 emptyColor="red.50"
                 color="red.600"
                 size="lg"
-                mt={64}
               />
             </Flex>
           ) : (
