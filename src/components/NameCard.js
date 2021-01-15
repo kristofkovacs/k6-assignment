@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Flex, Text, Heading, useDisclosure } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+
 import starwars from "../api/starwars";
 
 import MovieListModal from "./MovieListModal";

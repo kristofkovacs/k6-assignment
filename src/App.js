@@ -8,6 +8,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+
 import starwars from "./api/starwars";
 
 import SearchBar from "./components/SearchBar";

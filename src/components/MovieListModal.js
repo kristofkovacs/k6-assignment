@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import starwars from "../api/starwars";
 import axios from "axios";
 import Moment from "moment";
+
+import starwars from "../api/starwars";
 
 import {
   Modal,
