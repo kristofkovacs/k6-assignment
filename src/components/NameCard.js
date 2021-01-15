@@ -69,7 +69,7 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
             </Text>
           )}
         </Flex>
-        <ChevronRightIcon h={6} w={6} />
+        <ChevronRightIcon h={6} w={6} color="red.800" />
       </Flex>
       {isOpen && (
         <MovieListModal
