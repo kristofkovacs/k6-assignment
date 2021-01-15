@@ -6,12 +6,7 @@ import Card from "./Card";
 const List = ({ data, ...props }) => {
   console.log(data);
   return (
-    <SimpleGrid
-      columns={[2, 2, 2, 3]}
-      spacing={(2, 2, 10)}
-      mx={(2, 2, 0)}
-      {...props}
-    >
+    <SimpleGrid columns={[1, 1, 2, 2]} spacing={[4, 4, 8]} {...props} w="100%">
       {data &&
         data.map(({ name, species, homeworld, films }) => {
           return (

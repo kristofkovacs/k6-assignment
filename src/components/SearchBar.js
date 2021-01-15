@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <InputGroup>
       <Input
-        placeholder="Search.."
+        placeholder="Search among Star Wars characters..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         bgColor="white"

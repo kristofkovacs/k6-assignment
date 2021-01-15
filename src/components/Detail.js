@@ -44,7 +44,7 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Films {name} was in</ModalHeader>
+        <ModalHeader>{name} appeared in the following movies:</ModalHeader>
         <ModalCloseButton />
 
         <ModalBody>
@@ -70,9 +70,11 @@ const Detail = ({ isOpen, onClose, movieLinks, name }) => {
                 ({ data: { title, release_date, opening_crawl } }) => {
                   return (
                     <Flex bg="gray.200" m={2} p={2} direction="column">
-                      <Text>{title}</Text>
-                      <Text>{release_date}</Text>
-                      <Text>{`${opening_crawl.substring(0, 150)}...`}</Text>
+                      <Text>Title: {title}</Text>
+                      <Text>Release date: {release_date}</Text>
+                      <Text>
+                        Description: {`${opening_crawl.substring(0, 150)}...`}
+                      </Text>
                     </Flex>
                   );
                 }

@@ -61,7 +61,7 @@ const App = () => {
     <ChakraProvider>
       <Flex justify="center" w="100vw" minH="100vh" bgColor="gray.50">
         <Flex
-          w={["95%", "90%", "650px", "800px"]}
+          w={["95%", "90%", "650px", "800px", "1000px"]}
           my={6}
           align="center"
           direction="column"

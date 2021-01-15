@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, Text, Heading, useDisclosure } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import starwars from "../api/starwars";
 
@@ -11,14 +11,8 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
 
   useEffect(() => {
     if (species.length) {
-      species.forEach((specie, index) => {
-        starwars.get(specie).then((result) => {
-          if (index > 0) {
-            setSpeciesName(`${speciesName}, ${result.data.name}`);
-          } else {
-            setSpeciesName(result.data.name);
-          }
-        });
+      starwars.get(species[0]).then((result) => {
+        setSpeciesName(result.data.name);
       });
     } else {
       setSpeciesName("Human");
@@ -36,10 +30,11 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
   return (
     <>
       <Flex
-        w={["140px", "200px", "250px"]}
-        h={["140px", "200px", "250px"]}
-        justify="center"
-        align="flex-end"
+        minW={["100%", "100%", "350px"]}
+        py={4}
+        px={6}
+        align="center"
+        justify="space-between"
         borderRadius={10}
         _hover={{ transform: "scale(1.05)" }}
         transition="all 0.15s ease-in-out"
@@ -49,9 +44,9 @@ const Card = ({ name, species, homeWorld, movieLinks, ...props }) => {
         {...props}
       >
         <Flex direction="column">
-          <Text isTruncated noOfLines={3}>
-            Name: {name}
-          </Text>
+          <Heading as="h2" size="lg" color="teal.500">
+            {name}
+          </Heading>
           <Text isTruncated noOfLines={3}>
             Species: {speciesName}
           </Text>
