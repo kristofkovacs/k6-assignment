@@ -33,8 +33,11 @@ The data can be retrieved from the following API - https://swapi.dev/documentati
 ## Solution
 
 I have managed to create the solution for all the tasks described above. 👆
-The app fetches the given `API`, and retreives the first 10 characters presented in a `NameCardList` consisting of `NameCard` items. The list has a simple pagination, where the user can go to the next or previous 10 items.
-With typing in the `SearchBar` the user has the ability to request more detailed results (the new requests are delayed., in order to reduce the number of requests, so that the fetching will only fire when the user stops typing for 1000 ms).
+
+The app fetches the given `API`, and retreives the first 10 characters presented in a `NameCardList` consisting of `NameCard` items. The list has a simple pagination, where the user can go to the next or previous 10 items (if there are next or previous ones).
+
+With typing in the `SearchBar` the user has the ability to request more filtered results (the new requests are delayed, in order to reduce the number of requests, so the fetching will only fire when the user stops typing for 1000 ms).
+
 By clicking on a `NameCard` the user will see the list of movies the given character was a part of with the release date and a short truncated description of the movie.
 
 ### Libraries / Frameworks
@@ -48,16 +51,16 @@ Instead of the built-in fetch function I used `axios` for the API requests.
 
 I have used `moment` for parsing dates.
 
-### Trade-offs
+### Trade-offs / Thoughts / Issues
 
 I wanted to give you a sneak-peek of how I write my code, and didn't want to overcomplicate or overengineer things with writing my whole components with `styled-components` or include more unnecessary libraries than I used.
 
 The `<App />` and `<Detail />` component could be decomposed into more components, for example another `<MovieCard />` component could be introduced.
 
-We highly rely on the API, I also had some issues there, because in Safari and after deploying the https://swapi.dev/api did not work, because it's SSL certificate expired (Github issue: https://github.com/Juriy/swapi/issues/22) and the browsers did not support the communication between `https` and `http`, and I got some CORS issues, so I found an another working fork, which worked fine, so I decided to use that: https://swapi.py4e.com/api
+We highly rely on the API, I also had some issues there, because in Safari and after deploying the https://swapi.dev/api did not work, because it's SSL certificate expired (Github issue: https://github.com/Juriy/swapi/issues/22) and the browsers did not support the communication between `https` and `http`, and I got some CORS issues, so I found an another working fork, which worked fine, so I decided to use that: https://swapi.py4e.com/api.
 
 ## Conclusion
 
-I really liked the test and having in mind to write clear, consistent, production-ready code, it became really fun. After starting to go more deeply into the API structure I thought that it will take more time, but it became really fun, and after some styling it started to look really nice. Would love to extend the project in the future 😶
+I really liked the test! After starting to go more deeply into the API structure I thought that it will take more time, but it became really fun, and after some styling it started to look really nice. Would love to extend the project in the future 😶
 
 I'm looking forward to hearing your feedback!
